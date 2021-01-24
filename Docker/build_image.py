@@ -31,5 +31,5 @@ print("\nAplicando um novo build...")
 client.images.build(path = "./", tag = image_version, nocache = True)
 
 # Efetuando push para Docker Registry
-for status in client.images.push(repository = image_name , stream = True):
+for status in client.images.push(repository = image_version, stream = True):
     print(status)
