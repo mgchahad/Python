@@ -16,14 +16,17 @@ if choice == 'A' or 'a':
     print("Running NMAP Scan Top Ports...")
     top_ports = nmap.scan_top_ports(target[:-1])
     pprint(top_ports)
-if choice == 'B' or 'b':
+
+elif choice == 'B' or 'b':
     print("Running NMAP List Scan...")
     list_scan = nmap.nmap_list_scan(target[:-1])
     pprint(list_scan)
-if choice == 'C' or 'c':
+
+elif choice == 'C' or 'c':
     print("Running NMAP OS Detection...")
     os_detection = nmap.nmap_os_detection(target[:-1])
     pprint(os_detection)
+
 else:
     print("is not a valid network/domain!")
 
