@@ -6,16 +6,22 @@ from pprint import pprint
 nmap = nmap3.Nmap()
 
 target = subprocess.check_output("nmap --iflist | grep DST/MASK -A1 | grep -vE '(DST)' | awk '{print $1}'", shell=True, universal_newlines=True)
-print("\nRunning selected task on: ")
-print(target[:-1])
+print("Your network is: " + target[:-1])
 
-if target:
+options = {'top_ports': 'scan_top_ports', 'list_scan': 'nmap_list_scan', 'os_detection': 'nmap_os_detection'}
+print("NMAP options: A)" + options['top_ports'] + ", B)" + options['list_scan'] + ", C)" + options['os_detection'])
+choice = input("Please, choose one of NMAP options: ")
+
+if choice == 'A':
+    print("Running NMAP Scan Top Ports...")
     top_ports = nmap.scan_top_ports(target[:-1])
     pprint(top_ports)
-if target:
+if choice == 'B':
+    print("Running NMAP List Scan...")
     list_scan = nmap.nmap_list_scan(target[:-1])
     pprint(list_scan)
-if target:
+if choice == 'C':
+    print("Running NMAP OS Detection...")
     os_detection = nmap.nmap_os_detection(target[:-1])
     pprint(os_detection)
 else:
