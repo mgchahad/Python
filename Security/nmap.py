@@ -1,6 +1,7 @@
 import nmap3
 import subprocess
 import sys
+from pprint import pprint
 
 nmap = nmap3.Nmap()
 
@@ -10,11 +11,13 @@ print(target[:-1])
 
 if target:
     top_ports = nmap.scan_top_ports(target[:-1])
-    print(top_ports)
+    pprint(top_ports)
+if target:
     list_scan = nmap.nmap_list_scan(target[:-1])
-    print(list_scan)
+    pprint(list_scan)
+if target:
     os_detection = nmap.nmap_os_detection(target[:-1])
-    print(os_detection)
+    pprint(os_detection)
 else:
     print("is not a valid network/domain!")
 
